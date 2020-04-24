@@ -65,7 +65,7 @@ public class Main {
 			final Paging<Artist> artistPaging = getUsersTopArtistsRequest.execute();
 			// System.out.println("Artist Total: " + artistPaging.getTotal());
 
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 5; i++) {
 				Artist artist = (Artist) Array.get(artistPaging.getItems(), i);
 				String artistName = artist.getName();
 				topArtists.add(artistName);
@@ -87,7 +87,7 @@ public class Main {
 			// System.out.println("Track Total: " + trackPaging.getTotal());
 
 			ArrayList<Track> tracks = new ArrayList<Track>();
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 5; i++) {
 				Track track = (Track) Array.get(trackPaging.getItems(), i);
 				tracks.add(track);
 			}
