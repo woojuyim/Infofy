@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="src/main/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -21,24 +9,15 @@
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aopalliance-repackaged-2.5.0-b32.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-cli-1.4.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.13.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hk2-api-2.5.0-b32.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hk2-locator-2.5.0-b32.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hk2-utils-2.5.0-b32.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpclient5-5.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpclient5-cache-5.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpclient5-fluent-5.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpclient5-testing-5.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpclient5-win-5.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpcore5-5.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpcore5-h2-5.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpcore5-reactive-5.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpcore5-testing-5.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javassist-3.20.0-GA.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.annotation-api-1.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.inject-2.5.0-b32.jar"/>
@@ -52,15 +31,9 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-guava-2.25.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-media-jaxb.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-server.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jna-5.2.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jna-platform-5.2.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.osgi.core-4.2.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/osgi-resource-locator-1.0.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/persistence-api-1.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/reactive-streams-1.0.2.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/rxjava-2.2.8.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/validation-api-1.1.0.Final.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
