@@ -3,6 +3,7 @@ package spotify;
 //import java.util.ArrayList;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 import spotify.Users.User;
 
@@ -11,7 +12,115 @@ import spotify.Users.User;
 
 @Path("/")
 public class UserService {
-	// Shows all users
+
+	@GET
+	@Path("/create")
+	@Produces("application/json")
+	public static Response createUser(@QueryParam("user") String username, @QueryParam("pw") String password) {
+		if (!Users.userMap.containsKey(username)) {
+			User newUser = new User(username, password, "", "");
+			Users.userMap.put(username, newUser);
+
+			return Response.status(200).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity(Users.userMap.get(username).userJSON).build();
+		}
+
+		else {
+			return Response.status(404).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity("Username not available").build();
+		}
+	}
+
+	@GET
+	@Path("/user/{username}")
+	@Produces("application/json")
+	public static Response getUser(@PathParam("username") String username) {
+		if (Users.userMap.containsKey(username)) {
+			return Response.status(200).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity(Users.userMap.get(username).userJSON).build();
+
+		}
+
+		else {
+			return Response.status(404).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity("User not found").build();
+		}
+	}
+
+	// Push Access Token
+	@GET
+	@Path("/user/{username}/token")
+	@Produces("application/json")
+	public static Response setToken(@PathParam("username") String username, @QueryParam("code") String token) {
+		if (Users.userMap.containsKey(username)) {
+			Users.userMap.get(username).setAccessToken(token);
+			SpotifyAPI.getAPI(Users.userMap.get(username));
+			return Response.status(200).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity(Users.userMap.get(username).userJSON.toJSONString()).build();
+		} else {
+			return Response.status(404).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD").entity(token)
+					.build();
+		}
+	}
+
+	@GET
+	@Path("/user/{username}/topSongs")
+	@Produces("application/json")
+	public static Response getTopSongs(@PathParam("username") String username) {
+		if (Users.userMap.containsKey(username)) {
+			return Response.status(200).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity(Users.userMap.get(username).topSongsJSON).build();
+		}
+
+		else {
+			return Response.status(404).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity("User not found").build();
+		}
+	}
+
+	@GET
+	@Path("/user/{username}/topAlbums")
+	@Produces("application/json")
+	public static Response getTopAlbums(@PathParam("username") String username) {
+		if (Users.userMap.containsKey(username)) {
+			return Response.status(200).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity(Users.userMap.get(username).topAlbumsJSON).build();
+		} else {
+			return Response.status(404).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity("User not found").build();
+		}
+	}
+
 	@GET
 	@Path("/map")
 	@Produces("text/plain")
@@ -29,73 +138,6 @@ public class UserService {
 			return users;
 		}
 
-	}
-	
-	//Creates new user
-	@GET
-	@Path("/create")
-	@Produces("text/plain")
-	public static String createUser(@QueryParam("user") String username, @QueryParam("pw") String password) {
-		if (!Users.userMap.containsKey(username)) {
-			User newUser = new User(username, password, "", "");
-			Users.userMap.put(username, newUser);
-			return "user " + username + " created " + Users.userMap.get(username).userJSON.toString();
-		}
-
-		else {
-			return "user not created; " + username + " exists";
-		}
-
-	}
-
-	//Gets user information
-	@GET
-	@Path("/user/{username}")
-	@Produces("application/json")
-	public static String getUser(@PathParam("username") String username) {
-		if (Users.userMap.containsKey(username)) {
-			return username + " " + Users.userMap.get(username).userJSON.toJSONString();
-		} else {
-			return username + " does not exist";
-		}
-	}
-
-	// Push Access Token
-	@GET
-	@Path("/user/{username}/token")
-	@Produces("application/json")
-	public static String setToken(@PathParam("username") String username, @QueryParam("code") String token) {
-		if (Users.userMap.containsKey(username)) {
-			Users.userMap.get(username).setAccessToken(token);
-			SpotifyAPI.getAPI(Users.userMap.get(username));
-			return username + " " + Users.userMap.get(username).userJSON.toJSONString();
-		} else {
-			return token;
-		}
-	}
-
-	//Get top songs
-	@GET
-	@Path("/user/{username}/topSongs")
-	@Produces("application/json")
-	public static String getTopSongs(@PathParam("username") String username) {
-		if (Users.userMap.containsKey(username)) {
-			return username + " " + Users.userMap.get(username).topSongsJSON.toJSONString();
-		} else {
-			return username + " does not exist";
-		}
-	}
-
-	//get top albums
-	@GET
-	@Path("/user/{username}/topAlbums")
-	@Produces("application/json")
-	public static String getTopAlbums(@PathParam("username") String username) {
-		if (Users.userMap.containsKey(username)) {
-			return username + " " + Users.userMap.get(username).topAlbumsJSON.toJSONString();
-		} else {
-			return username + " does not exist";
-		}
 	}
 
 //	@SuppressWarnings("static-access")
