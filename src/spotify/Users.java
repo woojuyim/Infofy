@@ -41,6 +41,18 @@ public class Users {
 		public JSONArray topArtistsJSON;
 
 		@SuppressWarnings("unchecked")
+		public User() {
+			token = "";
+			currentlyPlaying = "";
+			userJSON = new JSONObject();
+			topSongsJSON = new JSONArray();
+			topArtistsJSON = new JSONArray();
+			userJSON.put("topSongs", topSongsJSON);
+			userJSON.put("topArtists", topArtistsJSON);
+			userJSON.put("currentlyPlaying", this.currentlyPlaying);
+
+		}
+		@SuppressWarnings("unchecked")
 		public User(String username, String password, String firstName, String lastName) {
 
 			this.username = username;

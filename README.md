@@ -5,6 +5,10 @@ https://accounts.spotify.com/authorize?response_type=code&client_id=2d77bc05e0f8
 
 ### REST Web Server
 
+- Get API information
+
+http://localhost:8080/spotifyAPI/token?code={access_token}
+
 - Show all users
 
 http://localhost:8080/spotifyAPI/map
