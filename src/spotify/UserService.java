@@ -5,6 +5,7 @@ package spotify;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import spotify.Users.User;
@@ -12,6 +13,7 @@ import spotify.Users.User;
 //import org.json.simple.JSONArray;
 //import org.json.simple.JSONObject;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Path("/")
 public class UserService {
 
