@@ -1,6 +1,7 @@
 # spotifyAPI
 
 In main.java, run the link on a web browser. Then get the code from the link and copy and paste it to the String code. 
+https://accounts.spotify.com/authorize?response_type=code&client_id=2d77bc05e0f841679c7455f113130e4f&scope=user-top-read user-read-playback-state&redirect_uri=https://www.spotify.com/us/
 
 ### REST Web Server
 
