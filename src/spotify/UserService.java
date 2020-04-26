@@ -5,6 +5,8 @@ package spotify;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import spotify.Users.User;
 
 //import org.json.simple.JSONArray;
@@ -13,6 +15,7 @@ import spotify.Users.User;
 @Path("/")
 public class UserService {
 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/create")
 	@Produces("application/json")
@@ -37,6 +40,7 @@ public class UserService {
 		}
 	}
 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}")
 	@Produces("application/json")
@@ -59,6 +63,7 @@ public class UserService {
 		}
 	}
 	// Push Access Token with no user
+		@CrossOrigin(origins = "*", allowedHeaders = "*")
 		@GET
 		@Path("/token")
 		@Produces("application/json")
@@ -81,6 +86,7 @@ public class UserService {
 			}
 		}
 	// Push Access Token
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}/token")
 	@Produces("application/json")
@@ -101,7 +107,8 @@ public class UserService {
 					.build();
 		}
 	}
-
+	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}/topSongs")
 	@Produces("application/json")
@@ -122,7 +129,8 @@ public class UserService {
 					.entity("User not found").build();
 		}
 	}
-
+	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}/topAlbums")
 	@Produces("application/json")
@@ -141,7 +149,8 @@ public class UserService {
 					.entity("User not found").build();
 		}
 	}
-
+	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/map")
 	@Produces("text/plain")
@@ -160,47 +169,4 @@ public class UserService {
 		}
 
 	}
-
-//	@SuppressWarnings("static-access")
-//	@GET
-//	@Path("/user/{username}/topSongs")
-//	@Produces("application/json")
-//	public String getTopSongs(@PathParam("username") String username) {
-//		return User.userMap.get(username).topSongsJSON.toJSONString();
-//	}
-//	
-//	@SuppressWarnings("static-access")
-//	@GET
-//	@Path("/user/{username}/topAlbums")
-//	@Produces("application/json")
-//	public String getTopAlbums(@PathParam("username") String username) {
-//		return User.userMap.get(username).topAlbumsJSON.toJSONString();
-//	}
-//	
-//	@SuppressWarnings("static-access")
-//	@GET
-//	@Path("/user/{username}/topAlbums")
-//	@Produces("application/json")
-//	public String getTopArtists(@PathParam("username") String username) {
-//		return User.userMap.get(username).topArtistsJSON.toJSONString();
-//	}
-
-//	@PUT
-//	@Path("/user")
-//	@Produces("application/json")
-//	public String setUser(@QueryParam("firstName") String firstName,
-//							@QueryParam("lastName") String lastName,
-//							@QueryParam("following") ArrayList<User> following,
-//							@QueryParam("topSongs") ArrayList<Song> topSongs,
-//							@QueryParam("songCount") int songCount) {
-//		User.firstName = firstName;
-//		User.lastName = lastName;
-//		User.following = following;
-//		User.topSongs = topSongs;
-//		User.songCount = songCount;
-//		String pattern = "{ \"firstName\": \"%s\", \"lastName\": \"%s\", \"following\": \"%s\", \"topSongs\": \"%s\","
-//				+ "\"songCount\": \"%s\"}";
-//		return String.format(pattern, User.firstName, User.lastName, User.following, User.topSongs, User.songCount);
-//	}
-
 }
