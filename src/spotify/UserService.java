@@ -5,19 +5,18 @@ package spotify;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
+//import org.springframework.web.bind.annotation.CrossOrigin;
 
 import spotify.Users.User;
 
 //import org.json.simple.JSONArray;
 //import org.json.simple.JSONObject;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Path("/")
 public class UserService {
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	//@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/create")
 	@Produces("application/json")
@@ -42,7 +41,7 @@ public class UserService {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	//@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}")
 	@Produces("application/json")
@@ -65,7 +64,7 @@ public class UserService {
 		}
 	}
 	// Push Access Token with no user
-		@CrossOrigin(origins = "*", allowedHeaders = "*")
+		//@CrossOrigin(origins = "*", allowedHeaders = "*")
 		@GET
 		@Path("/token")
 		@Produces("application/json")
@@ -88,7 +87,7 @@ public class UserService {
 			}
 		}
 	// Push Access Token
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	//@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}/token")
 	@Produces("application/json")
@@ -110,7 +109,7 @@ public class UserService {
 		}
 	}
 	
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	//@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}/topSongs")
 	@Produces("application/json")
@@ -132,7 +131,7 @@ public class UserService {
 		}
 	}
 	
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	//@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}/topAlbums")
 	@Produces("application/json")
@@ -152,7 +151,7 @@ public class UserService {
 		}
 	}
 	
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	//@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/map")
 	@Produces("text/plain")
