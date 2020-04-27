@@ -12,7 +12,7 @@ import spotify.Users.User;
 @Path("/")
 public class UserService {
 
-	//@CrossOrigin(origins = "*", allowedHeaders = "*")
+	// @CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/create")
 	@Produces("application/json")
@@ -37,7 +37,7 @@ public class UserService {
 		}
 	}
 
-	//@CrossOrigin(origins = "*", allowedHeaders = "*")
+	// @CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}")
 	@Produces("application/json")
@@ -59,31 +59,33 @@ public class UserService {
 					.entity("User not found").build();
 		}
 	}
+
 	// Push Access Token with no user
-		//@CrossOrigin(origins = "*", allowedHeaders = "*")
-		@GET
-		@Path("/token")
-		@Produces("application/json")
-		public static Response getValue(@QueryParam("code") String token) {
-			if (token!=null) {
-				User user = new User();
-				user.setAccessToken(token);
-				SpotifyAPI.getAPI(user);
-				return Response.status(200).header("Access-Control-Allow-Origin", "*")
-						.header("Access-Control-Allow-Credentials", "true")
-						.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-						.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-						.entity(user.userJSON.toJSONString()).build();
-			} else {
-				return Response.status(404).header("Access-Control-Allow-Origin", "*")
-						.header("Access-Control-Allow-Credentials", "true")
-						.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-						.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD").entity(token)
-						.build();
-			}
+	// @CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GET
+	@Path("/token")
+	@Produces("application/json")
+	public static Response getValue(@QueryParam("code") String token) {
+		if (token != null) {
+			User user = new User();
+			user.setAccessToken(token);
+			SpotifyAPI.getAPI(user);
+			return Response.status(200).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity(user.userJSON.toJSONString()).build();
+		} else {
+			return Response.status(404).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD").entity(token)
+					.build();
 		}
+	}
+
 	// Push Access Token
-	//@CrossOrigin(origins = "*", allowedHeaders = "*")
+	// @CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}/token")
 	@Produces("application/json")
@@ -104,8 +106,8 @@ public class UserService {
 					.build();
 		}
 	}
-	
-	//@CrossOrigin(origins = "*", allowedHeaders = "*")
+
+	// @CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}/topSongs")
 	@Produces("application/json")
@@ -126,8 +128,8 @@ public class UserService {
 					.entity("User not found").build();
 		}
 	}
-	
-	//@CrossOrigin(origins = "*", allowedHeaders = "*")
+
+	// @CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/user/{username}/topAlbums")
 	@Produces("application/json")
@@ -146,8 +148,8 @@ public class UserService {
 					.entity("User not found").build();
 		}
 	}
-	
-	//@CrossOrigin(origins = "*", allowedHeaders = "*")
+
+	// @CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/map")
 	@Produces("text/plain")

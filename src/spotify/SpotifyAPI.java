@@ -18,11 +18,7 @@ import com.wrapper.spotify.requests.authorization.authorization_code.Authorizati
 import spotify.Users.User;
 
 public class SpotifyAPI {
-	// https://accounts.spotify.com/authorize?response_type=code&client_id=2d77bc05e0f841679c7455f113130e4f&scope=user-top-read user-read-playback-state&redirect_uri=https://www.spotify.com/us/
-
-	private static ArrayList<String> topArtists = new ArrayList<String>();
-	private static ArrayList<String> topTracks = new ArrayList<String>();
-	private static String currentlyPlaying = "";
+//https://accounts.spotify.com/authorize?response_type=code&client_id=2d77bc05e0f841679c7455f113130e4f&scope=user-top-read user-read-playback-state&redirect_uri=https://www.spotify.com/us/
 
 	private static final String clientId = "2d77bc05e0f841679c7455f113130e4f";
 	private static final String clientSecret = "f36176b01d21452fadc0eeedf04e275b";
@@ -162,13 +158,15 @@ public class SpotifyAPI {
 //	}
 	@SuppressWarnings("unchecked")
 	public static void getAPI(User user) {
-		//Clears entries
-		topArtists.clear();
-		topTracks.clear();
-		currentlyPlaying = "";
+		ArrayList<String> topArtists = new ArrayList<String>();
+		ArrayList<String> topTracks = new ArrayList<String>();
+		String currentlyPlaying = "";
 		setCode(user.getAccessToken());
 		authorizationCode_Sync();
 		
+		JSONArray artists = new JSONArray();
+		JSONArray toptracks = new JSONArray();
+		String current = "";
 		
 		try {
 			GetCurrentSong getCurrentSong = new GetCurrentSong(spotifyApi);
@@ -188,13 +186,8 @@ public class SpotifyAPI {
 			topTracks = songs.get();
 			topArtists = getartists.get();
 			executor.shutdown();
-
 			
-			JSONArray artists = new JSONArray();
-			JSONArray toptracks = new JSONArray();
-			String current = "";
-			
-			for (int i = 0; i < topArtists.size(); i++) {
+			for (int i = 0; i < topArtists.size(); ++i) {
 				//System.out.println("Your #" + (i + 1) + " artist over the last month is: " + topArtists.get(i));
 				artists.add(topArtists.get(i));
 			}
@@ -209,11 +202,8 @@ public class SpotifyAPI {
 			if (currentlyPlaying!= null && !currentlyPlaying.equalsIgnoreCase("")) {
 				//System.out.println(currentlyPlaying + " is currently playing");
 				current = currentlyPlaying;
-			} else {
-				//System.out.println("Nothing is currently playing");
 			}
 			
-			user.setUserJson(artists, toptracks, current);
 		} catch (InterruptedException e) {
 			System.out.println("Interrupted in API: " + e.getMessage());
 		} catch (ExecutionException e) {
@@ -221,7 +211,7 @@ public class SpotifyAPI {
 		} catch (NullPointerException e) {
 			System.out.println("Nullpoint Exception in API: " + e.getMessage());
 		}
-		
+		user.setUserJson(artists, toptracks, current);
 		
 	}
 

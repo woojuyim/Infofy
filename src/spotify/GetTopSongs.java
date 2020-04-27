@@ -12,30 +12,34 @@ import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopTracksRequest;
 
-public class GetTopSongs implements Callable<ArrayList<String>>{
+public class GetTopSongs implements Callable<ArrayList<String>> {
 
 	private static ArrayList<String> topTracks;
 	private SpotifyApi spotifyApi;
+
 	public GetTopSongs(SpotifyApi spotifyApi) {
 		this.spotifyApi = spotifyApi;
 		topTracks = new ArrayList<String>();
 	}
+
 	@Override
-	public ArrayList<String> call() throws Exception {
-		final GetUsersTopTracksRequest getUsersTopTracksRequest = spotifyApi.getUsersTopTracks().time_range("short_term").build();
+	public ArrayList<String> call() throws IOException, SpotifyWebApiException  {
+		topTracks.clear();
+		final GetUsersTopTracksRequest getUsersTopTracksRequest = spotifyApi.getUsersTopTracks()
+				.time_range("short_term").build();
 		final String accessToken = spotifyApi.getAccessToken();
 
 		final SpotifyApi spotifyApi = new SpotifyApi.Builder().setAccessToken(accessToken).build();
 
-		try {
-			final Paging<Track> trackPaging = getUsersTopTracksRequest.execute();
+		final Paging<Track> trackPaging = getUsersTopTracksRequest.execute();
 
-			ArrayList<Track> tracks = new ArrayList<Track>();
-			for (int i = 0; i < 10; i++) {
-				Track track = (Track) Array.get(trackPaging.getItems(), i);
-				tracks.add(track);
-			}
-			for (int i = 0; i < tracks.size(); i++) {
+		ArrayList<Track> tracks = new ArrayList<Track>();
+		for (int i = 0; i < 10; i++) {
+			Track track = (Track) Array.get(trackPaging.getItems(), i);
+			tracks.add(track);
+		}
+		for (int i = 0; i < tracks.size(); i++) {
+			try {
 				String name = "";
 				name += tracks.get(i).getName() + " by ";
 				for (int j = 0; j < tracks.get(i).getArtists().length; j++) {
@@ -52,15 +56,13 @@ public class GetTopSongs implements Callable<ArrayList<String>>{
 					}
 				}
 				Thread.sleep(100);
-				System.out.println(name);
+				System.out.println(i+" " + name);
 				topTracks.add(name);
-			}
-			return topTracks;
-
-		} catch (IOException | SpotifyWebApiException | NullPointerException | ArrayIndexOutOfBoundsException  e) {
-			System.out.println("Error in getTopSongs: " + e.getMessage());
-		} 
-		return null;
+			} catch (NullPointerException | ArrayIndexOutOfBoundsException | InterruptedException e) {
+				System.out.println("Error in getTopSongs: " + e.getMessage());
+			} 
+		}
+		return topTracks;
 	}
 
 }

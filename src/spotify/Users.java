@@ -43,7 +43,7 @@ public class Users {
 			currentlyPlaying = "";
 			userJSON.put("topSongs", topSongsJSON);
 			userJSON.put("topArtists", topArtistsJSON);
-			userJSON.put("currentlyPlaying", this.currentlyPlaying);
+			userJSON.put("currentlyPlaying", currentlyPlaying);
 
 			
 		}
@@ -66,7 +66,7 @@ public class Users {
 			userJSON.put("lastName", lastName);
 			userJSON.put("topSongs", topSongsJSON);
 			userJSON.put("topArtists", topArtistsJSON);
-			userJSON.put("currentlyPlaying", this.currentlyPlaying);
+			userJSON.put("currentlyPlaying", currentlyPlaying);
 
 		}
 
@@ -76,8 +76,8 @@ public class Users {
 			topArtistsJSON = artists;
 			currentlyPlaying = current;
 			userJSON.replace("topSongs", topSongsJSON);
-			userJSON.replace("currentlyPlaying", current);
 			userJSON.replace("topArtists", topArtistsJSON);
+			userJSON.replace("currentlyPlaying", current);
 		}
 
 		public String getUsername() {

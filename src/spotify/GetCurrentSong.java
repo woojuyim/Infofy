@@ -52,7 +52,7 @@ public class GetCurrentSong implements Callable<String>{
 		} catch (IOException | SpotifyWebApiException | NullPointerException e) {
 			System.out.println("Error in getCurrentPlayback: " + e.getMessage());
 		}
-		return null;
+		return "";
 
 	}
 }
