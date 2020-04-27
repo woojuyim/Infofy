@@ -26,7 +26,6 @@ public class Users {
 		public String lastName;
 		public String token;
 		public String currentlyPlaying;
-		public ArrayList<Song> topSongs;
 		public ArrayList<String> topArtists;
 
 		public JSONObject userJSON;
@@ -115,14 +114,6 @@ public class Users {
 		public void setLastName(String lastName) {
 			this.lastName = lastName;
 			userJSON.replace("lastName", this.lastName);
-		}
-
-		public ArrayList<Song> getTopSongs() {
-			return this.topSongs;
-		}
-
-		public void setTopSongs(ArrayList<Song> topSongs) {
-			this.topSongs = topSongs;
 		}
 
 		@SuppressWarnings("unchecked")
