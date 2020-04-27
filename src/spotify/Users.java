@@ -3,8 +3,6 @@ package spotify;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -28,11 +26,8 @@ public class Users {
 		public String lastName;
 		public String token;
 		public String currentlyPlaying;
-		public ArrayList<User> following;
 		public ArrayList<Song> topSongs;
-		public ArrayList<String> topAlbums;
 		public ArrayList<String> topArtists;
-		public int songCount;
 
 		public JSONObject userJSON;
 		public JSONArray followingJSON;
@@ -42,15 +37,16 @@ public class Users {
 
 		@SuppressWarnings("unchecked")
 		public User() {
-			token = "";
-			currentlyPlaying = "";
 			userJSON = new JSONObject();
 			topSongsJSON = new JSONArray();
 			topArtistsJSON = new JSONArray();
+			token = "";
+			currentlyPlaying = "";
 			userJSON.put("topSongs", topSongsJSON);
 			userJSON.put("topArtists", topArtistsJSON);
 			userJSON.put("currentlyPlaying", this.currentlyPlaying);
 
+			
 		}
 		@SuppressWarnings("unchecked")
 		public User(String username, String password, String firstName, String lastName) {
@@ -62,21 +58,15 @@ public class Users {
 			token = "";
 			currentlyPlaying = "";
 			userJSON = new JSONObject();
-			followingJSON = new JSONArray();
 			topSongsJSON = new JSONArray();
-			topAlbumsJSON = new JSONArray();
 			topArtistsJSON = new JSONArray();
 
 			userJSON.put("username", username);
 			userJSON.put("password", password);
 			userJSON.put("firstName", firstName);
 			userJSON.put("lastName", lastName);
-			userJSON.put("following", followingJSON);
 			userJSON.put("topSongs", topSongsJSON);
-			userJSON.put("topAlbums", topSongsJSON);
 			userJSON.put("topArtists", topArtistsJSON);
-			userJSON.put("songCount", this.songCount);
-			userJSON.put("token", this.token);
 			userJSON.put("currentlyPlaying", this.currentlyPlaying);
 
 		}
@@ -127,30 +117,12 @@ public class Users {
 			userJSON.replace("lastName", this.lastName);
 		}
 
-		public ArrayList<User> getFollowing() {
-			return this.following;
-		}
-
-		public void setFollowing(ArrayList<User> following) {
-			this.following = following;
-		}
-
 		public ArrayList<Song> getTopSongs() {
 			return this.topSongs;
 		}
 
 		public void setTopSongs(ArrayList<Song> topSongs) {
 			this.topSongs = topSongs;
-		}
-
-		public int getSongCount() {
-			return this.songCount;
-		}
-
-		@SuppressWarnings("unchecked")
-		public void setSongCount(int songCount) {
-			this.songCount = songCount;
-			userJSON.replace("songCount", this.songCount);
 		}
 
 		@SuppressWarnings("unchecked")
