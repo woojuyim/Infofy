@@ -47,6 +47,7 @@ public class GetCurrentSong implements Callable<String>{
 						name += artName + ", ";
 					}
 				}
+				System.out.println("Current Song: " + name);
 				return name;
 			}
 		} catch (IOException | SpotifyWebApiException | NullPointerException e) {

@@ -36,8 +36,9 @@ public class GetTopArtists implements Callable<ArrayList<String>> {
 
 				Artist artist = (Artist) Array.get(artistPaging.getItems(), i);
 				String artistName = artist.getName();
-				System.out.println(i + ": " + artistName);
 				Thread.sleep(100);
+				
+				System.out.println("Top Artist " + i + ": " + artistName);
 				topArtists.add(artistName);
 			} catch (NullPointerException | ArrayIndexOutOfBoundsException | InterruptedException e) {
 				System.out.println("Error in getTopArtists: " + e.getMessage());

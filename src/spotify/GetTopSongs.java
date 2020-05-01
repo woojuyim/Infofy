@@ -55,8 +55,8 @@ public class GetTopSongs implements Callable<ArrayList<String>> {
 						name += artName + ", ";
 					}
 				}
+				System.out.println("Top Song " + i + ": " + name);
 				Thread.sleep(100);
-				System.out.println(i+" " + name);
 				topTracks.add(name);
 			} catch (NullPointerException | ArrayIndexOutOfBoundsException | InterruptedException e) {
 				System.out.println("Error in getTopSongs: " + e.getMessage());

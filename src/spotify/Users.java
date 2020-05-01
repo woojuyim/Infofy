@@ -2,7 +2,7 @@ package spotify;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.Vector;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -26,7 +26,7 @@ public class Users {
 		public String lastName;
 		public String token;
 		public String currentlyPlaying;
-		public ArrayList<String> topArtists;
+		public Vector<String> topArtists;
 
 		public JSONObject userJSON;
 		public JSONArray followingJSON;

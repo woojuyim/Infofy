@@ -51,111 +51,6 @@ public class SpotifyAPI {
 		}
 	}
 
-//	public static void getUsersTopArtists_Sync() {
-//		final String accessToken = spotifyApi.getAccessToken();
-//
-//		final SpotifyApi spotifyApi = new SpotifyApi.Builder().setAccessToken(accessToken).build();
-//		final GetUsersTopArtistsRequest getUsersTopArtistsRequest = spotifyApi.getUsersTopArtists().time_range("short_term").build();
-//
-//		try {
-//			final Paging<Artist> artistPaging = getUsersTopArtistsRequest.execute();
-//
-//			for (int i = 0; i < 5; i++) {
-//				Artist artist = (Artist) Array.get(artistPaging.getItems(), i);
-//				String artistName = artist.getName();
-//				topArtists.add(artistName);
-//			}
-//		} catch (IOException | SpotifyWebApiException | NullPointerException| ArrayIndexOutOfBoundsException e) {
-//			System.out.println("Error in getTopArtists: " + e.getMessage());
-//		} 
-//	}
-//
-//	public static void getUsersTopTracks_Sync() {
-//		final GetUsersTopTracksRequest getUsersTopTracksRequest = spotifyApi.getUsersTopTracks().time_range("short_term").build();
-//		final String accessToken = spotifyApi.getAccessToken();
-//
-//		final SpotifyApi spotifyApi = new SpotifyApi.Builder().setAccessToken(accessToken).build();
-//
-//		try {
-//			final Paging<Track> trackPaging = getUsersTopTracksRequest.execute();
-//
-//			ArrayList<Track> tracks = new ArrayList<Track>();
-//			for (int i = 0; i < 10; i++) {
-//				Track track = (Track) Array.get(trackPaging.getItems(), i);
-//				tracks.add(track);
-//			}
-//			for (int i = 0; i < tracks.size(); i++) {
-//				String name = "";
-//				name += tracks.get(i).getName() + " by ";
-//				for (int j = 0; j < tracks.get(i).getArtists().length; j++) {
-//					ArtistSimplified art = (ArtistSimplified) Array.get(tracks.get(i).getArtists(), j);
-//					String artName = art.getName();
-//					if (tracks.get(i).getArtists().length == 1) {
-//						name += artName;
-//					} else if (j == 0 && tracks.get(i).getArtists().length == 2) {
-//						name += artName + " ";
-//					} else if ((j + 1) == tracks.get(i).getArtists().length && j != 0) {
-//						name += "and " + artName;
-//					} else {
-//						name += artName + ", ";
-//					}
-//				}
-//				topTracks.add(name);
-//			}
-//
-//		} catch (IOException | SpotifyWebApiException | NullPointerException | ArrayIndexOutOfBoundsException  e) {
-//			System.out.println("Error in getTopSongs: " + e.getMessage());
-//		} 
-//	}
-//
-//	public static void getArtist_Sync() {
-//		final String accessToken = spotifyApi.getAccessToken();
-//		final String id = "31W5EY0aAly4Qieq6OFu6I";
-//		final GetArtistRequest getArtistRequest = spotifyApi.getArtist(id).build();
-//
-//		try {
-//			final Artist artist = getArtistRequest.execute();
-//
-//			System.out.println("Name: " + artist.getName());
-//		} catch (IOException | SpotifyWebApiException | NullPointerException e) {
-//			System.out.println("Error in getArtist: " + e.getMessage());
-//		}
-//	}
-//
-//	public static void getInformationAboutUsersCurrentPlayback_Sync() {
-//		final GetInformationAboutUsersCurrentPlaybackRequest getInformationAboutUsersCurrentPlaybackRequest = spotifyApi
-//				.getInformationAboutUsersCurrentPlayback().build();
-//		Track track = null;
-//
-//		try {
-//			final CurrentlyPlayingContext currentlyPlayingContext = getInformationAboutUsersCurrentPlaybackRequest
-//					.execute();
-//			if (currentlyPlayingContext.getIs_playing()) {
-//				track = currentlyPlayingContext.getItem();
-//			}
-//
-//			if (track != null) {
-//				String name = "";
-//				name += track.getName() + " by ";
-//				for (int j = 0; j < track.getArtists().length; j++) {
-//					ArtistSimplified art = (ArtistSimplified) Array.get(track.getArtists(), j);
-//					String artName = art.getName();
-//					if (track.getArtists().length == 1) {
-//						name += artName;
-//					} else if (j == 0 && track.getArtists().length == 2) {
-//						name += artName + " ";
-//					} else if ((j + 1) == track.getArtists().length && j != 0) {
-//						name += "and " + artName;
-//					} else {
-//						name += artName + ", ";
-//					}
-//				}
-//				currentlyPlaying = name;
-//			}
-//		} catch (IOException | SpotifyWebApiException | NullPointerException e) {
-//			System.out.println("Error in getCurrentPlayback: " + e.getMessage());
-//		}
-//	}
 	@SuppressWarnings("unchecked")
 	public static void getAPI(User user) {
 		ArrayList<String> topArtists = new ArrayList<String>();
@@ -173,9 +68,13 @@ public class SpotifyAPI {
 			GetTopSongs getTopSongs = new GetTopSongs(spotifyApi);
 			GetTopArtists getTopArtists = new GetTopArtists(spotifyApi);
 
-			Future<String> currentSong;
 			Future<ArrayList<String>> songs;
 			Future<ArrayList<String>> getartists;
+			
+			
+			
+			Future<String> currentSong;
+			
 
 			ExecutorService executor = Executors.newFixedThreadPool(3);
 			songs = executor.submit(getTopSongs);
