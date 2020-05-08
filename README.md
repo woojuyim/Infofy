@@ -21,8 +21,7 @@ http://localhost:8080/spotifyAPI/create?user={username}&pw={password}
 
 http://localhost:8080/spotifyAPI/{username}
 
-- Add access token to user
-- Gets data from Spotify
+- Gets data from Spotify for that user
 
 http://localhost:8080/spotifyAPI/{username}/token?code={access_token}
 
