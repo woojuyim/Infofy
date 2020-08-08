@@ -1,16 +1,17 @@
 # Infofy - Spotify REST API Web Server
 
-Access Spotify information such as top songs, top artists, and the currently playing song.  
-Runs using Apache Tomcat.  
-Front-end only works on port 8080
+- Access Spotify information such as top songs, top artists, and the currently playing song.  
+- Program pulls constantly so information such as currently playing song changes instantaneously.  
+- Runs using Apache Tomcat on port 8080
+- API Keys are outdated and only placeholders
 
 
 ## Screenshots:
 
 
-![Home](https://i.imgur.com/195QuBf.png)
+![Home](https://i.imgur.com/gVwGztD.png)
 
-![Token_Area](https://i.imgur.com/xg8YiRX.png)
+![Example_1](https://i.imgur.com/qi7UxZB.png)
 
 
 ## REST API Endpoints 
@@ -47,4 +48,3 @@ Front-end only works on port 8080
 
 /infofy/api/{username}/topAlbums
 
-Link that authorizes information: https://accounts.spotify.com/authorize?response_type=code&client_id=75fbbc3b3d8b4bc2ba1e1c197221602e&scope=user-top-read%20user-read-playback-state&redirect_uri=http://localhost:8080/infofy/data

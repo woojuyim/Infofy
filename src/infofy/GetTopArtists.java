@@ -40,6 +40,7 @@ public class GetTopArtists implements Callable<ArrayList<String>> {
 				topArtists.add(artistName);
 			} catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
 				System.out.println("Error in getTopArtists: " + e.getMessage());
+				break;
 			}
 		}
 		return topArtists;

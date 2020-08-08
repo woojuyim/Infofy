@@ -41,6 +41,7 @@ public class GetTopSongs implements Callable<ArrayList<String>> {
 				tracks.add(track);
 			} catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
 				System.out.println("Error in getTopSongs: " + e.getMessage());
+				break;
 			}
 		}
 		for (int i = 0; i < tracks.size(); i++) {

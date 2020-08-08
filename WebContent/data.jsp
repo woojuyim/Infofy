@@ -20,7 +20,7 @@
 			User user = (User) request.getAttribute("user");
 		if (user == null) {
 		%>
-		<div class="error">404 No information found</div>
+		<div class="error">404 Error: No information found</div>
 		<button onclick="window.location.href = 'index.html'">Back</button>
 		<%
 			} else {
