@@ -15,14 +15,16 @@
 			</div>
 			<button class="search"
 				onclick="window.location.href = 'https://accounts.spotify.com/authorize?response_type=code&client_id=75fbbc3b3d8b4bc2ba1e1c197221602e&scope=user-top-read%20user-read-playback-state&redirect_uri=http://localhost:8080/infofy/data'">
-				Get Spotify Information</button> <br>
+				Get Spotify Information</button>
+			<br>
 			<button class="button" onclick="toggleSection()">For API
-				Users</button> <br>
+				Users</button>
+			<br>
 			<div id="show">
-				<form action="/spotifyAPI/api/token" method="GET">
+				<form action="api/token" method="GET">
 					<div>Enter your token code here</div>
-					<br> <input placeholder = "Token Code" type="text" class="form-control" id="tokenCode"
-						name="code">
+					<br> <input placeholder="Token Code" type="text"
+						class="form-control" id="tokenCode" name="code">
 					<button class="button">Submit</button>
 				</form>
 			</div>

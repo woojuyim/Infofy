@@ -6,3 +6,4 @@ function toggleSection() {
 		section.style.display = 'block';
 	}
 }
+
