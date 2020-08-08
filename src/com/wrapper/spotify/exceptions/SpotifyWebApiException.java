@@ -7,7 +7,12 @@ import org.apache.http.HttpException;
  */
 public class SpotifyWebApiException extends HttpException {
 
-  public SpotifyWebApiException() {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public SpotifyWebApiException() {
     super();
   }
 

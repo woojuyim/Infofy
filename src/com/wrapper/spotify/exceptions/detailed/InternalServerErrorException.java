@@ -8,7 +8,12 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
  */
 public class InternalServerErrorException extends SpotifyWebApiException {
 
-  public InternalServerErrorException() {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public InternalServerErrorException() {
     super();
   }
 

@@ -7,7 +7,12 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
  */
 public class ForbiddenException extends SpotifyWebApiException {
 
-  public ForbiddenException() {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public ForbiddenException() {
     super();
   }
 

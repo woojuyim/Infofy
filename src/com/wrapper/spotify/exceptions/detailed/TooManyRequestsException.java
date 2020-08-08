@@ -7,7 +7,11 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
  */
 public class TooManyRequestsException extends SpotifyWebApiException {
 
-  private int retryAfter;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private int retryAfter;
 
   public TooManyRequestsException() {
     super();

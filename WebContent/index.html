@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Searchify</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="functions.js"></script>
+
+</head>
+<body>
+	<div class="main">
+		<div>
+			<div class="title">Searchify</div>
+			<button class="search"
+				onclick="window.open('https://accounts.spotify.com/authorize?response_type=code&client_id=2d77bc05e0f841679c7455f113130e4f&scope=user-top-read user-read-playback-state&redirect_uri=https://www.spotify.com/us/')">
+				Authorize Spotify Account</button>
+			<button class="sendCode" onclick="toggleSection()">Get
+				Current Spotify Information</button>
+
+		</div>
+	</div>
+	<div id="show">
+		<form action="/spotifyAPI/api/token" method="GET">
+			<div>Enter your token code here</div>
+			<br> 
+			<input type = "text" class="form-control" id="tokenCode" name="code">
+			<button id="tokenSubmit">Submit</button>
+		</form>
+	</div>
+</body>
+</html>

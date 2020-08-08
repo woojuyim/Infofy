@@ -5,41 +5,24 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>se.michaelthelin.spotify</groupId>
-  <artifactId>spotify-web-api-java</artifactId>
-  <version>4.3.0</version>
-  <!--
-   DO NOT FORGET
-   - to update version numbers in README (2x)
-   - to update the Javadoc by deleting the docs folder and recreating it
-  -->
-
-  <name>Spotify Web API Java Client</name>
-  <description>A Java client for Spotify's Web API</description>
-  <url>https://github.com/thelinmichael/spotify-web-api-java</url>
+  <groupId>woojuyim.spotifyAPI</groupId>
+  <artifactId>spotifyAPI</artifactId>
+  <version>1</version>
+  <name>Spotify Rest API Client</name>
+  <description>Access Spotify information using Java</description>
+  <url>https://github.com/woojuyim/SpotifyRestAPI</url>
 
   <developers>
-    <developer>
-      <name>Michael Thelin</name>
-      <email>thelinmichael@gmail.com</email>
-      <organization>Michael Thelin</organization>
-      <organizationUrl>https://github.com/thelinmichael</organizationUrl>
-      <roles>
-        <role>developer</role>
-      </roles>
-      <timezone>Europe/Stockholm</timezone>
-    </developer>
-    <developer>
-      <name>Jonas Thelemann</name>
-      <email>e-mail@jonas-thelemann.de</email>
-      <organization>Jonas Thelemann</organization>
-      <organizationUrl>https://github.com/dargmuesli</organizationUrl>
-      <roles>
-        <role>maintainer</role>
-      </roles>
-      <timezone>Europe/Berlin</timezone>
-    </developer>
-  </developers>
+  	<developer>
+  		<name>Wooju Yim</name>
+  		<email>woojuyim@usc.edu</email>
+  		<organization>Wooju Yim</organization>
+  		<organizationUrl>https://github.com/woojuyim</organizationUrl>
+  		<roles>
+  			<role>developer</role>
+  		</roles>
+  	</developer>
+    </developers>
 
   <licenses>
     <license>
@@ -48,12 +31,6 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-
-  <scm>
-    <url>https://github.com/thelinmichael/spotify-web-api-java</url>
-    <connection>scm:git:git://github.com/thelinmichael/spotify-web-api-java.git</connection>
-    <developerConnection>scm:git:git@github.com:thelinmichael/spotify-web-api-java.git</developerConnection>
-  </scm>
 
   <dependencies>
     <dependency>

@@ -8,7 +8,12 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
  */
 public class UnauthorizedException extends SpotifyWebApiException {
 
-  public UnauthorizedException() {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public UnauthorizedException() {
     super();
   }
 

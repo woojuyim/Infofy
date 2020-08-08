@@ -7,7 +7,12 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
  */
 public class BadRequestException extends SpotifyWebApiException {
 
-  public BadRequestException() {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public BadRequestException() {
     super();
   }
 

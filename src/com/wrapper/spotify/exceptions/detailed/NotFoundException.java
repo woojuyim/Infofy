@@ -7,7 +7,12 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
  */
 public class NotFoundException extends SpotifyWebApiException {
 
-  public NotFoundException() {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public NotFoundException() {
     super();
   }
 

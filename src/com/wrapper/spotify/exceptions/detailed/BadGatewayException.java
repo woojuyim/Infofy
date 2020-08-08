@@ -7,7 +7,12 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
  */
 public class BadGatewayException extends SpotifyWebApiException {
 
-  public BadGatewayException() {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public BadGatewayException() {
     super();
   }
 

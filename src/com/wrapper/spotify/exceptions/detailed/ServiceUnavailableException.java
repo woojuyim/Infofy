@@ -8,7 +8,12 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
  */
 public class ServiceUnavailableException extends SpotifyWebApiException {
 
-  public ServiceUnavailableException() {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public ServiceUnavailableException() {
     super();
   }
 

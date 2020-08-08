@@ -1,34 +1,44 @@
-# spotifyAPI
+# Searchify - Spotify REST API Web Server
 
-In main.java, run the link on a web browser. Then get the code from the link and copy and paste it to the String code. 
-https://accounts.spotify.com/authorize?response_type=code&client_id=2d77bc05e0f841679c7455f113130e4f&scope=user-top-read user-read-playback-state&redirect_uri=https://www.spotify.com/us/
+Access Spotify information such as top songs, top artists, and the currently playing song. 
+Login
 
-### REST Web Server
+Home Screen:
 
-- Get API information
+![Home](https://imgur.com/a/Vxepaca)
+![Token_Area](https://imgur.com/a/j4FoQOw)
 
-http://localhost:8080/spotifyAPI/token?code={access_token}
+
+### REST API Endpoints
+
+Link that authorizes information: "https://accounts.spotify.com/authorize?response_type=code&client_id=2d77bc05e0f841679c7455f113130e4f&scope=user-top-read-user-read-playback-state&redirect_uri=https://www.spotify.com/us/"
+
+- Get Spotify API information(JSON)
+
+http://localhost:8080/spotifyAPI/api/token?code={access_token}
+
+#### Depreciated Endpoints
 
 - Show all users
 
-http://localhost:8080/spotifyAPI/map
+http://localhost:8080/spotifyAPI/api/map
 
 - Create users
 
-http://localhost:8080/spotifyAPI/create?user={username}&pw={password}
+http://localhost:8080/spotifyAPI/api/create?user={username}&pw={password}
 
 - Show user information
 
-http://localhost:8080/spotifyAPI/{username}
+http://localhost:8080/spotifyAPI/api/{username}
 
 - Gets data from Spotify for that user
 
-http://localhost:8080/spotifyAPI/{username}/token?code={access_token}
+http://localhost:8080/spotifyAPI/api/{username}/token?code={access_token}
 
 - Get top songs
 
-http://localhost:8080/spotifyAPI/{username}/topSongs
+http://localhost:8080/spotifyAPI/api/{username}/topSongs
 
 - Get top albums
 
-http://localhost:8080/spotifyAPI/{username}/topAlbums
+http://localhost:8080/spotifyAPI/api/{username}/topAlbums

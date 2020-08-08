@@ -94,7 +94,6 @@ public abstract class AbstractModelObject implements IModelObject {
      */
     @SuppressWarnings("unchecked")
     public <X> X[] createModelObjectArray(final JsonArray jsonArray, Class<X> clazz) {
-      @SuppressWarnings("unchecked")
       X[] array = (X[]) Array.newInstance(clazz, jsonArray.size());
 
       for (int i = 0; i < jsonArray.size(); i++) {
