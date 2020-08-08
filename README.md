@@ -5,8 +5,8 @@ Login
 
 Home Screen:
 
-![Home](https://imgur.com/a/Vxepaca)
-![Token_Area](https://imgur.com/a/j4FoQOw)
+![Home](https://i.imgur.com/195QuBf.png)
+![Token_Area](https://i.imgur.com/xg8YiRX.png)
 
 
 ### REST API Endpoints
