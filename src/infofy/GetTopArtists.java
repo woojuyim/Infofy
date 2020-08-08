@@ -31,7 +31,7 @@ public class GetTopArtists implements Callable<ArrayList<String>> {
 
 		final Paging<Artist> artistPaging = getUsersTopArtistsRequest.execute();
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 10; i++) {
 			try {
 				Artist artist = (Artist) Array.get(artistPaging.getItems(), i);
 				String artistName = artist.getName();

@@ -4,6 +4,7 @@ spotify-web-api-java.iml
 
 ### Maven
 target/
+*.env
 
 ### Project
 /bin/
