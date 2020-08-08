@@ -1,4 +1,4 @@
-package spotify;
+package infofy;
 
 import java.io.IOException;
 import java.net.URI;
@@ -14,15 +14,13 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 
-
-import spotify.Users.User;
+import infofy.Users.User;
 
 public class SpotifyAPI {
-//https://accounts.spotify.com/authorize?response_type=code&client_id=2d77bc05e0f841679c7455f113130e4f&scope=user-top-read user-read-playback-state&redirect_uri=https://www.spotify.com/us/
 
-	private static final String clientId = "2d77bc05e0f841679c7455f113130e4f";
-	private static final String clientSecret = "f36176b01d21452fadc0eeedf04e275b";
-	private static final URI redirectUri = SpotifyHttpManager.makeUri("https://www.spotify.com/us/");
+	private static final String clientId = "75fbbc3b3d8b4bc2ba1e1c197221602e";
+	private static final String clientSecret = "582e4989a396466a87edd6ac2f33dd59";
+	private static final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:8080/infofy/data");
 
 	private static String code = "";
 	
@@ -40,8 +38,6 @@ public class SpotifyAPI {
 	public static void authorizationCode_Sync() {
 		try {
 			final AuthorizationCodeCredentials authorizationCodeCredentials = authorizationCodeRequest.execute();
-
-			// Set access and refresh token for further "spotifyApi" object usage
 			spotifyApi.setAccessToken(authorizationCodeCredentials.getAccessToken());
 			spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
 
@@ -69,10 +65,7 @@ public class SpotifyAPI {
 			GetTopArtists getTopArtists = new GetTopArtists(spotifyApi);
 
 			Future<ArrayList<String>> songs;
-			Future<ArrayList<String>> getartists;
-			
-			
-			
+			Future<ArrayList<String>> getartists;		
 			Future<String> currentSong;
 			
 
@@ -86,6 +79,8 @@ public class SpotifyAPI {
 			topArtists = getartists.get();
 			executor.shutdown();
 			
+			user.setUserData(topArtists, topTracks, currentlyPlaying);
+
 			for (int i = 0; i < topArtists.size(); ++i) {
 				//System.out.println("Your #" + (i + 1) + " artist over the last month is: " + topArtists.get(i));
 				artists.add(topArtists.get(i));
@@ -102,6 +97,7 @@ public class SpotifyAPI {
 				//System.out.println(currentlyPlaying + " is currently playing");
 				current = currentlyPlaying;
 			}
+
 			
 		} catch (InterruptedException e) {
 			System.out.println("Interrupted in API: " + e.getMessage());
@@ -111,7 +107,6 @@ public class SpotifyAPI {
 			System.out.println("Nullpoint Exception in API: " + e.getMessage());
 		}
 		user.setUserJson(artists, toptracks, current);
-		
 	}
 
 }

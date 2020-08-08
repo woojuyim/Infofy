@@ -1,4 +1,4 @@
-package spotify;
+package infofy;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -11,13 +11,14 @@ import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.data.player.GetInformationAboutUsersCurrentPlaybackRequest;
 
-public class GetCurrentSong implements Callable<String>{
+public class GetCurrentSong implements Callable<String> {
 
 	private SpotifyApi spotifyApi;
+
 	public GetCurrentSong(SpotifyApi spotifyApi) {
 		this.spotifyApi = spotifyApi;
 	}
-	
+
 	@Override
 	public String call() throws Exception {
 		final GetInformationAboutUsersCurrentPlaybackRequest getInformationAboutUsersCurrentPlaybackRequest = spotifyApi

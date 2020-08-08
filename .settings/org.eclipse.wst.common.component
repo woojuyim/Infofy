@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="spotifyAPI">
+    <wb-module deploy-name="infofy">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <property name="context-root" value="spotifyAPI"/>
-        <property name="java-output-path" value="/spotifyAPI/target/classes"/>
+        <property name="context-root" value="infofy"/>
+        <property name="java-output-path" value="/Infofy/target/classes"/>
     </wb-module>
 </project-modules>

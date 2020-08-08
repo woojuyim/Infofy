@@ -1,4 +1,4 @@
-package spotify;
+package infofy;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -21,7 +21,7 @@ public class GetTopArtists implements Callable<ArrayList<String>> {
 	}
 
 	@Override
-	public ArrayList<String> call() throws SpotifyWebApiException, IOException{
+	public ArrayList<String> call() throws SpotifyWebApiException, IOException {
 		topArtists.clear();
 		final String accessToken = spotifyApi.getAccessToken();
 
@@ -33,16 +33,14 @@ public class GetTopArtists implements Callable<ArrayList<String>> {
 
 		for (int i = 0; i < 5; i++) {
 			try {
-
 				Artist artist = (Artist) Array.get(artistPaging.getItems(), i);
 				String artistName = artist.getName();
-				Thread.sleep(100);
 				
 				System.out.println("Top Artist " + i + ": " + artistName);
 				topArtists.add(artistName);
-			} catch (NullPointerException | ArrayIndexOutOfBoundsException | InterruptedException e) {
+			} catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
 				System.out.println("Error in getTopArtists: " + e.getMessage());
-			} 
+			}
 		}
 		return topArtists;
 	}

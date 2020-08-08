@@ -1,4 +1,4 @@
-package spotify;
+package infofy;
 
 import javax.ws.rs.ApplicationPath;
 

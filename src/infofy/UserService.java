@@ -1,17 +1,40 @@
-package spotify;
+package infofy;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
-//import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.CrossOrigin;
-
-import spotify.Users.User;
+import infofy.Users.User;
 
 //@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Path("/")
 public class UserService {
 
+	// Push Access Token with no user
+	// @CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GET
+	@Path("/token")
+	@Produces("application/json")
+	public static Response getValue(@QueryParam("code") String token) {
+		if (token != null) {
+			User user = new User();
+			user.setAccessToken(token);
+			SpotifyAPI.getAPI(user);
+			return Response.status(200).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.entity(user.userJSON.toJSONString()).build();
+		} else {
+			return Response.status(404).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD").entity(token)
+					.build();
+		}
+	}
+
+	
+	//Depreciated Endpoints
 	// @CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GET
 	@Path("/create")
@@ -57,30 +80,6 @@ public class UserService {
 					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
 					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
 					.entity("User not found").build();
-		}
-	}
-
-	// Push Access Token with no user
-	// @CrossOrigin(origins = "*", allowedHeaders = "*")
-	@GET
-	@Path("/token")
-	@Produces("application/json")
-	public static Response getValue(@QueryParam("code") String token) {
-		if (token != null) {
-			User user = new User();
-			user.setAccessToken(token);
-			SpotifyAPI.getAPI(user);
-			return Response.status(200).header("Access-Control-Allow-Origin", "*")
-					.header("Access-Control-Allow-Credentials", "true")
-					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-					.entity(user.userJSON.toJSONString()).build();
-		} else {
-			return Response.status(404).header("Access-Control-Allow-Origin", "*")
-					.header("Access-Control-Allow-Credentials", "true")
-					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD").entity(token)
-					.build();
 		}
 	}
 

@@ -1,4 +1,4 @@
-package spotify;
+package infofy;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -23,7 +23,7 @@ public class GetTopSongs implements Callable<ArrayList<String>> {
 	}
 
 	@Override
-	public ArrayList<String> call() throws IOException, SpotifyWebApiException  {
+	public ArrayList<String> call() throws IOException, SpotifyWebApiException {
 		topTracks.clear();
 		final GetUsersTopTracksRequest getUsersTopTracksRequest = spotifyApi.getUsersTopTracks()
 				.time_range("short_term").build();
@@ -34,9 +34,14 @@ public class GetTopSongs implements Callable<ArrayList<String>> {
 		final Paging<Track> trackPaging = getUsersTopTracksRequest.execute();
 
 		ArrayList<Track> tracks = new ArrayList<Track>();
+
 		for (int i = 0; i < 10; i++) {
-			Track track = (Track) Array.get(trackPaging.getItems(), i);
-			tracks.add(track);
+			try {
+				Track track = (Track) Array.get(trackPaging.getItems(), i);
+				tracks.add(track);
+			} catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+				System.out.println("Error in getTopSongs: " + e.getMessage());
+			}
 		}
 		for (int i = 0; i < tracks.size(); i++) {
 			try {
@@ -56,11 +61,10 @@ public class GetTopSongs implements Callable<ArrayList<String>> {
 					}
 				}
 				System.out.println("Top Song " + i + ": " + name);
-				Thread.sleep(100);
 				topTracks.add(name);
-			} catch (NullPointerException | ArrayIndexOutOfBoundsException | InterruptedException e) {
+			} catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
 				System.out.println("Error in getTopSongs: " + e.getMessage());
-			} 
+			}
 		}
 		return topTracks;
 	}

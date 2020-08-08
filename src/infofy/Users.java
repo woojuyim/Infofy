@@ -1,33 +1,25 @@
-package spotify;
+package infofy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Vector;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class Users {
-//	public static void main(String []argc) {
-//		Users.User user = new Users.User("asdf", "asdf", "afe", "Name");
-//		user.setAccessToken("AQBax1e1gZ5vEPjaSjIhCh2oEyYw2AhkjcFCQRKAwzxq8KEf4XyQphRsGYk7GEc-Fs3dOhV-tBkP3EdiiPeYIECdo7r53i2dy1Cd-DcYWa3r3iqoajCjS7_LW_opTdCeom7QXXJNPcOb5-AzPGeCFxc08CZjfOOx1XcnNUlhyjT8ubS88J3KyWN35Ytw881fa7KQ1Plt8eBkTGN7B3WzT1JMyuaVFVjNkaHwPnfKbIqT4r46gDZcDNVs");
-//		SpotifyAPI.getAPI(user);
-//		System.out.println(user.userJSON.toJSONString());
-//	}
-	
+public class Users {	
 	static HashMap<String, User> userMap = new HashMap<String, User>();
-
-	// inner object
 	public static class User {
-
 		public String username;
 		public String password;
 		public String firstName;
 		public String lastName;
 		public String token;
+		
 		public String currentlyPlaying;
-		public Vector<String> topArtists;
-
+		public ArrayList<String> topArtists;
+		public ArrayList<String> topSongs;
+		
+		
 		public JSONObject userJSON;
 		public JSONArray followingJSON;
 		public JSONArray topSongsJSON;
@@ -49,7 +41,6 @@ public class Users {
 		}
 		@SuppressWarnings("unchecked")
 		public User(String username, String password, String firstName, String lastName) {
-
 			this.username = username;
 			this.password = password;
 			this.firstName = firstName;
@@ -69,7 +60,11 @@ public class Users {
 			userJSON.put("currentlyPlaying", currentlyPlaying);
 
 		}
-
+		public void setUserData(ArrayList<String> artists, ArrayList<String> songs, String current) {
+			topArtists = artists;
+			topSongs = songs;
+			currentlyPlaying = current;
+		}
 		@SuppressWarnings("unchecked")
 		public void setUserJson(JSONArray artists, JSONArray songs, String current) {
 			topSongsJSON = songs;
