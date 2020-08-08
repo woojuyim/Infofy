@@ -1,17 +1,16 @@
 # Searchify - Spotify REST API Web Server
 
 Access Spotify information such as top songs, top artists, and the currently playing song. 
-Login
 
-Home Screen:
+
+## Screenshots:
 
 ![Home](https://i.imgur.com/195QuBf.png)
+
 ![Token_Area](https://i.imgur.com/xg8YiRX.png)
 
 
-### REST API Endpoints
-
-Link that authorizes information: "https://accounts.spotify.com/authorize?response_type=code&client_id=2d77bc05e0f841679c7455f113130e4f&scope=user-top-read-user-read-playback-state&redirect_uri=https://www.spotify.com/us/"
+## REST API Endpoints
 
 - Get Spotify API information(JSON)
 
@@ -42,3 +41,5 @@ http://localhost:8080/spotifyAPI/api/{username}/topSongs
 - Get top albums
 
 http://localhost:8080/spotifyAPI/api/{username}/topAlbums
+
+Link that authorizes information: "https://accounts.spotify.com/authorize?response_type=code&client_id=2d77bc05e0f841679c7455f113130e4f&scope=user-top-read-user-read-playback-state&redirect_uri=https://www.spotify.com/us/"
